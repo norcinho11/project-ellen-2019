@@ -1,6 +1,7 @@
 plugins {
     java
     application
+    pmd
 }
 
 group = "sk.tuke.kpi.oop"
@@ -27,6 +28,13 @@ dependencies {
 
 tasks {
     withType<JavaCompile> {
-        options.compilerArgs.plusAssign("-parameters")
+        options.compilerArgs.addAll(listOf("-parameters", "-Xlint:unchecked,rawtypes", "-Werror"))
     }
+}
+
+configure<PmdExtension> {
+    toolVersion = "6.18.0"
+    isConsoleOutput = true
+    ruleSets = emptyList()
+    ruleSetFiles = files("src/main/resources/pmd-ruleset.xml")
 }

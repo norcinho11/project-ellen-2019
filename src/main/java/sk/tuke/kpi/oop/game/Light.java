@@ -6,7 +6,6 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 public class Light extends AbstractActor implements Switchable,EnergyConsumer {
     private Animation light_on;
     private Animation light_off;
-    private Reactor reactor;
     private boolean electricityFlow;
     private boolean IsLightning;
 
@@ -21,7 +20,7 @@ public class Light extends AbstractActor implements Switchable,EnergyConsumer {
     }
 
 
-    public boolean getElectricityFlow() {
+    public boolean isElectricityFlow() {
         return this.electricityFlow;
     }
 

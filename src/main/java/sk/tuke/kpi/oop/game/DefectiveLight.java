@@ -19,10 +19,9 @@ public class DefectiveLight extends Light implements Repairable {
     }
 
     private double randomNumber(double min, double max){
-        max=Math.floor(max);
-        min=Math.ceil(min);
-        int number =20;
-        return Math.floor(Math.random() * (max - min)) + min;
+        double newMax=Math.floor(max);
+        double newMin=Math.ceil(min);
+        return Math.floor(Math.random() * (newMax - newMin)) + newMin;
 }
 public void myLightOnOff(){
         if(randomNumber(0, 20)==1){

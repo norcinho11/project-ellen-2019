@@ -1,27 +1,24 @@
 package sk.tuke.kpi.oop.game.tools;
 
-import org.jetbrains.annotations.NotNull;
-import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
-import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Usable;
 
-public abstract class BreakableTool extends AbstractActor implements Usable {
+public abstract class BreakableTool<T extends AbstractActor> extends AbstractActor implements Usable<T> {
 
-    public int remainingUses;
-    public Animation breakableTool;
-    void removeFromScene(@NotNull Animation animation) {
-    };
+    private int remainingUses;
+
+
     public int getRemainingUses(){
         return this.remainingUses;
     }
-     protected BreakableTool(){
-        remainingUses=1;
+     public BreakableTool(int remainingUses){
+        this.remainingUses=remainingUses;
 
 
      }
-public void use(int number){
-        this.remainingUses= number;
+
+    @Override
+    public void useWith(T actor) {
         if(this.remainingUses>0){
             this.remainingUses--;
         }
@@ -29,9 +26,5 @@ public void use(int number){
             getScene().removeActor(this);
             return;
         }
-}
-
-    @Override
-    public void useWith(Actor actor) {
     }
 }

@@ -1,13 +1,13 @@
 package sk.tuke.kpi.oop.game.tools;
 
-import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.graphics.Animation;
+import sk.tuke.kpi.oop.game.Reactor;
 
-public class Mjolnir extends BreakableTool {
-    private Animation hammerAnimation;
+public class Mjolnir extends BreakableTool<Reactor> {
 
-public Mjolnir(){
-    super.remainingUses=4;
-    hammerAnimation = new Animation("sprites/hammer.png");
+    public Mjolnir(){
+    super(4);
+        Animation hammerAnimation = new Animation("sprites/hammer.png");
+        setAnimation(hammerAnimation);
 }
 }

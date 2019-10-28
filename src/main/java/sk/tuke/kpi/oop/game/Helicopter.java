@@ -1,7 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
 
-import sk.tuke.kpi.gamelib.Actor;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
@@ -9,8 +8,6 @@ import sk.tuke.kpi.gamelib.framework.actions.Loop;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 public class Helicopter extends AbstractActor {
-    private Animation helicopterAnimation;
-    private Actor helicopter;
     private Player player;
 
     public Player getPlayer() {
@@ -19,7 +16,7 @@ public class Helicopter extends AbstractActor {
 
     public Helicopter() {
 
-        helicopterAnimation = new Animation("sprites/heli.png", 64, 64, 0.12f);
+        Animation helicopterAnimation = new Animation("sprites/heli.png", 64, 64, 0.12f);
         setAnimation(helicopterAnimation);
     }
 
@@ -29,9 +26,6 @@ public class Helicopter extends AbstractActor {
             return;
         }
         new Loop<>(new Invoke<>(this::helpSearching)).scheduleFor(this);
-    }
-
-    private void removedFromScene(Player player) {
     }
 
 
@@ -52,9 +46,6 @@ public class Helicopter extends AbstractActor {
                  }
             if (player.getPosition().getX() == this.getPosition().getX() && player.getPosition().getY() == this.getPosition().getY()) {
                 player.setEnergy(player.getEnergy() - 1);
-            }
-            if (player.getEnergy() == 0) {
-                removedFromScene(player);
             }
        // }
     }
