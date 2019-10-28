@@ -6,7 +6,7 @@ import sk.tuke.kpi.gamelib.graphics.Color;
 
 public class PowerSwitch extends AbstractActor {
     private Animation stateSwitch;
-    public Reactor reactor;
+    private Reactor reactor;
     private Switchable device;
 
 
