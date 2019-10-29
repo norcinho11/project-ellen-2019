@@ -5,6 +5,10 @@ import sk.tuke.kpi.oop.game.Usable;
 
 public abstract class BreakableTool<T extends AbstractActor> extends AbstractActor implements Usable<T> {
 
+    public void setRemainingUses(int remainingUses) {
+        this.remainingUses = remainingUses;
+    }
+
     private int remainingUses;
 
 

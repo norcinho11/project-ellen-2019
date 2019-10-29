@@ -29,6 +29,7 @@ public class Light extends AbstractActor implements Switchable,EnergyConsumer {
     public void turnOn() {
         if (this.electricityFlow == true && this.IsLightning == false) {
             this.IsLightning = true;
+
             setAnimation(light_on);
         }
     }
@@ -41,7 +42,7 @@ public class Light extends AbstractActor implements Switchable,EnergyConsumer {
         }
     }
 
-    void switchLight() {
+    void toogle() {
         this.IsLightning = !this.IsLightning;
         if (this.electricityFlow == true && this.IsLightning == false) {
             setAnimation(light_on);

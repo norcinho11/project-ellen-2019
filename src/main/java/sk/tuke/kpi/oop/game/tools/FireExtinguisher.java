@@ -17,5 +17,19 @@ public class FireExtinguisher extends BreakableTool<Reactor> {
 
     }
 
+    @Override
+    public void useWith(Reactor actor) {
+        if(actor == null){
+            return;}
+        int uses = this.getRemainingUses();
+        if(uses>0){
+
+            this.setRemainingUses(uses-1);
+        }
+        else if(uses==0){
+            getScene().removeActor(this);
+            return;
+        }
+    }
 }
 

@@ -10,6 +10,9 @@ public class PerpetualReactorHeating extends AbstractAction<Reactor>{
     private int number;
 
     public void setReactor(Reactor reactor) {
+        if(this.reactor==null){
+            return;
+        }
         this.reactor = reactor;
     }
     public PerpetualReactorHeating(float number){

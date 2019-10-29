@@ -16,27 +16,27 @@ public class Computer extends AbstractActor implements EnergyConsumer{
 
     }
 
-    public int Add(int x, int y) {
+    public int add(int x, int y) {
         if (isComputerOn) {
             return x + y;
         }
         return 0;
     }
-    public float Add(float x, float y) {
+    public float add(float x, float y) {
         if (isComputerOn) {
             return x + y;
         }
         return 0;
     }
 
-    public int Sub(int x, int y) {
+    public int sub(int x, int y) {
         if (isComputerOn) {
             return x - y;
         }
         return 0;
     }
 
-    public float Sub(float x, float y) {
+    public float sub(float x, float y) {
         if (isComputerOn) {
             return x - y;
         }
