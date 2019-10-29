@@ -106,10 +106,11 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     }
 
     public void repairWith(Hammer classHammer) {
-        if(this == null){
+
+        if(classHammer==null) {
             return;
         }
-        if (classHammer != null && this.damage > 0 && this.damage < 100) {
+        if (classHammer != null && this.damage >= 0 && this.damage < 100) {
             if (this.damage > 50) {
                 this.damage -= 50;
                 this.temperature = (this.damage * 40) + 2000;

@@ -36,6 +36,7 @@ private void changeLightAnimation(){
     public void turnOn() {
         if (this.electricityFlow == true && this.IsLightning == false) {
             this.IsLightning = true;
+            toogle();
           changeLightAnimation();
         }
     }
@@ -44,6 +45,7 @@ private void changeLightAnimation(){
     public void turnOff() {
         if (this.electricityFlow == true && this.IsLightning == true) {
             this.IsLightning = false;
+            toogle();
             changeLightAnimation();
         }
     }
@@ -52,7 +54,7 @@ private void changeLightAnimation(){
         if (this.electricityFlow == true && this.IsLightning == false) {
             this.IsLightning=true;
             setAnimation(light_on);
-        } else{
+        } if(this.electricityFlow==true && this.IsLightning==true){
             setAnimation(light_off);
             this.IsLightning=false;
         }

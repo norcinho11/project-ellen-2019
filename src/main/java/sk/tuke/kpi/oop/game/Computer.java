@@ -49,7 +49,7 @@ public class Computer extends AbstractActor implements EnergyConsumer{
     if(isOn){
         computerAnimation.stop();
     }
-    else {
+    if(!isOn) {
         computerAnimation.play();
 
         isComputerOn = true;
