@@ -77,20 +77,18 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     public void decreaseTemperature(int decrement) {
         decrement = Math.max(0, decrement);
-        if (!this.isOn) {
-            return;
-        }
-
-        if (this.damage < 50) {
-            this.temperature -= decrement;
-        } else if (this.damage < 100) {
-            this.temperature -= (decrement / 2);
-        }
-        if (this.temperature < 0) {
-            this.temperature = 0;
-        }
-        if (this.temperature <= 4000) {
-            updateAnimation();
+        if (this.isOn) {
+            if (this.damage < 50) {
+                this.temperature -= decrement;
+            } else if (this.damage < 100) {
+                this.temperature -= (decrement / 2);
+            }
+            if (this.temperature < 0) {
+                this.temperature = 0;
+            }
+            if (this.temperature <= 4000) {
+                updateAnimation();
+            }
         }
 
     }
@@ -169,7 +167,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.device = null;
             }
 
-    private void extinguishWith(FireExtinguisher myFireExtinguisher) {
+    public void extinguishWith(FireExtinguisher myFireExtinguisher) {
         setAnimation(extinguisherAnimation);
         this.temperature -= 4000;
         setAnimation(extinguishedReactor);
