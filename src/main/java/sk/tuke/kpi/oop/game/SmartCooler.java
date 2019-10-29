@@ -23,14 +23,18 @@ public class SmartCooler extends Cooler {
             return;
         }
      if(super.getReactor().getTemperature()>2500){
-         super.turnOn();
+         this.turnOn();
      }
      if(super.getReactor().getTemperature()<1500){
-         super.turnOff();
+         this.turnOff();
      }
      if(isOn()){
          this.getReactor().decreaseTemperature(1);
      }
+     if (!isOn()){
+         this.turnOff();
+     }
     }
+
 
 }
