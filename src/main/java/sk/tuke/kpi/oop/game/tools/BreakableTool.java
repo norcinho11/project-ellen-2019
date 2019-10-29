@@ -27,7 +27,7 @@ public abstract class BreakableTool<T extends Actor> extends AbstractActor imple
         if(this.getRemainingUses()>0){
             this.setRemainingUses(this.getRemainingUses()-1);
         }
-        else if(this.getRemainingUses()==0){
+        if(this.getRemainingUses()==0){
             getScene().removeActor(this);
             return;
         }

@@ -15,8 +15,8 @@ public class PerpetualReactorHeating extends AbstractAction<Reactor>{
         }
         this.reactor = reactor;
     }
-    public PerpetualReactorHeating(float number){
-        this.number = (int) number;
+    public PerpetualReactorHeating(float temperature){
+        this.number = (int) temperature;
     }
 
     @Override
