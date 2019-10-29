@@ -19,7 +19,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     private Animation hotReactor;
     private Animation brokenReactor;
     private Animation defaultReactor;
-    private Animation myExtinguisher;
+    private Animation extinguisherAnimation;
     private Animation extinguishedReactor;
     private EnergyConsumer device;
     private boolean isOn;
@@ -43,7 +43,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         hotReactor = new Animation("sprites/reactor_hot.png", 80, 80, 0.05f, Animation.PlayMode.LOOP_PINGPONG);
         brokenReactor = new Animation("sprites/reactor_broken.png", 80, 80, 0.1f, Animation.PlayMode.LOOP_PINGPONG);
         extinguishedReactor = new Animation("sprites/reactor_extinguished.png");
-        myExtinguisher = new Animation("sprites/extinguisher.png");
+        extinguisherAnimation = new Animation("sprites/extinguisher.png");
         updateAnimation();
         setAnimation(defaultReactor);
     }
@@ -77,6 +77,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     public void decreaseTemperature(int decrement) {
         decrement = Math.max(0, decrement);
+        if (!this.isOn) {
+            return;
+        }
 
         if (this.damage < 50) {
             this.temperature -= decrement;
@@ -97,13 +100,17 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             setAnimation(normalReactor);
         } else if (this.temperature >= 4000 && this.temperature < 6000) {
             setAnimation(hotReactor);
-        } else if(this.temperature>6000){
+        } else if(this.temperature>=6000){
             this.damage=100;
+            turnOff();
             setAnimation(brokenReactor);
         }
     }
 
     public void repairWith(Hammer classHammer) {
+        if(this == null){
+            return;
+        }
         if (classHammer != null && this.damage > 0 && this.damage < 100) {
             if (this.damage > 50) {
                 this.damage -= 50;
@@ -112,6 +119,12 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         } else if (this.damage <= 50) {
             this.damage = 0;
             this.temperature = 2000;
+        }
+        else if(this.damage==100) {
+            return;
+        }
+            else if(this.damage==0){
+                return;
         }
         updateAnimation();
     }
@@ -157,8 +170,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             }
 
     private void extinguishWith(FireExtinguisher myFireExtinguisher) {
-        setAnimation(myExtinguisher);
-        int number = 1;
+        setAnimation(extinguisherAnimation);
         this.temperature -= 4000;
         setAnimation(extinguishedReactor);
 
@@ -172,9 +184,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     @Override
     public boolean repair() {
-        // if(){
-        //   return true;
-        //  }
+         if(this.damage<100){
+           return true;
+         }
         return false;
 
     }

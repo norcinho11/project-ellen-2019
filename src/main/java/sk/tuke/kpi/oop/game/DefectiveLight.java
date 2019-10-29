@@ -35,10 +35,8 @@ public void myLightOnOff(){
     @Override
     public void addedToScene(@NotNull Scene scene) {
         super.addedToScene(scene);
-        new ActionSequence<>(
-            new Wait<>(10),
         //new Invoke<>(this::myLightOnOff).scheduleFor(this);
-        new Loop<>(new Invoke<>(this::myLightOnOff))).scheduleFor(this);
+        new Loop<>(new Invoke<>(this::myLightOnOff)).scheduleFor(this);
     }
 
     @Override

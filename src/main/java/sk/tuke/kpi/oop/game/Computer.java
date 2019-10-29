@@ -26,7 +26,8 @@ public class Computer extends AbstractActor implements EnergyConsumer{
         if (isComputerOn) {
             return x + y;
         }
-        return 0;
+
+            return 0;
     }
 
     public int sub(int x, int y) {
@@ -45,13 +46,14 @@ public class Computer extends AbstractActor implements EnergyConsumer{
 
     @Override
     public void setPowered(boolean isOn) {
-    if(isOn==false){
+    if(isOn){
         computerAnimation.stop();
+        isComputerOn=false;
     }
-    else{
+    else {
         computerAnimation.play();
-    }
-        isComputerOn=true;
 
+        isComputerOn = true;
+    }
     }
 }
