@@ -5,7 +5,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
-import sk.tuke.kpi.oop.game.tools.Breakable;
+import sk.tuke.kpi.oop.game.tools.FireExtinguisher;
 import sk.tuke.kpi.oop.game.tools.Hammer;
 
 import java.util.HashSet;
@@ -104,13 +104,10 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             setAnimation(brokenReactor);
         }
     }
+@Override
+    public boolean repair() {
 
-    public void repairWith(Hammer hammer) {
-
-        if(hammer==null) {
-            return;
-        }
-        if (hammer != null && this.damage >= 0 && this.damage < 100) {
+        if (this.damage >= 0 && this.damage < 100) {
             if (this.damage > 50) {
                 this.damage -= 50;
                 this.temperature = (this.damage * 40) + 2000;
@@ -120,12 +117,13 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             this.temperature = 2000;
         }
         else if(this.damage==100) {
-            return;
+            return false;
         }
             else if(this.damage==0){
-                return;
+                return false;
         }
         updateAnimation();
+            return true;
     }
 
 
@@ -168,11 +166,14 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         this.device = null;
             }
 
-    public void extinguish(Breakable breakable) {
+    public boolean extinguish() {
         setAnimation(extinguisherAnimation);
         this.temperature -= 4000;
         setAnimation(extinguishedReactor);
-
+        if(this.damage !=100){
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -180,14 +181,4 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         super.addedToScene(scene);
         new PerpetualReactorHeating(1).scheduleFor(this);
     }
-
-    @Override
-    public boolean repair() {
-         if(this.damage<100){
-           return true;
-         }
-        return false;
-
-    }
-
 }

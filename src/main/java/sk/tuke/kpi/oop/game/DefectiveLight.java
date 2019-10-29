@@ -6,14 +6,15 @@ import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
 
 public class DefectiveLight extends Light implements Repairable {
-    //private Light light;
+    private boolean isRepairing;
+    private float save;
 
     public Light getLight() {
         return this;
     }
 
     public DefectiveLight(){
-
+        isRepairing=false;
 
 
     }
@@ -25,6 +26,13 @@ public class DefectiveLight extends Light implements Repairable {
 }
 public void myLightOnOff(){
         if(randomNumber(0, 20)==1){
+            this.save -=0.0166;
+            if(isRepairing){
+                return;
+            }
+            if(this.save<0){
+                return;
+            }
             //super.setElectricityFlow(true || false);
             this.toogle();
         }
@@ -39,7 +47,13 @@ public void myLightOnOff(){
 
     @Override
     public boolean repair() {
-        return false;
+        if(isRepairing==true){
+            return false;
+        }
+        isRepairing=true;
+        save=10f;
+        this.turnOn();
+        return true;
     }
 }
 

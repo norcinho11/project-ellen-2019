@@ -32,11 +32,11 @@ public class Gameplay extends Scenario {
         new Invoke<>(cooler::turnOn)).scheduleFor(cooler);
 
         new Invoke<>(() -> {
-         reactor.repairWith(hammer);
+         reactor.repair(hammer);
         } );
         new When<>(
           () -> reactor.getTemperature() >= 3000,
-         new Invoke<>(() -> reactor.repairWith(hammer))
+         new Invoke<>(() -> reactor.repair(hammer))
         ).scheduleFor(reactor);
     }
 }
