@@ -14,6 +14,9 @@ public class DefectiveLight extends Light implements Repairable {
     }
 
     public DefectiveLight(){
+        if(super.isElectricityFlow()==false){
+            return;
+        }
         isRepairing=false;
 
 
@@ -26,6 +29,9 @@ public class DefectiveLight extends Light implements Repairable {
 }
 public void myLightOnOff(){
     if(isRepairing){
+        if(!super.isElectricityFlow()){
+            return;
+        }
         this.save -=0.0166;
 
         if(this.save<0){
@@ -36,7 +42,7 @@ public void myLightOnOff(){
         if(randomNumber(0, 20)==1){
 
             //super.setElectricityFlow(true || false);
-            this.toogle();
+            this.toggle();
         }
 }
 

@@ -47,7 +47,7 @@ private void changeLightAnimation(){
             this.IsLightning = false;
             changeLightAnimation();
     }
-    void toogle() {
+    void toggle() {
         this.IsLightning = !this.IsLightning;
         changeLightAnimation();
     }
