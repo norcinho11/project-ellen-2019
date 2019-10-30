@@ -11,7 +11,7 @@ public class Light extends AbstractActor implements Switchable,EnergyConsumer {
 
 
     public Light() {
-        electricityFlow = false;
+        electricityFlow = true;
         IsLightning = false;
         light_on = new Animation("sprites/light_on.png");
         light_off = new Animation("sprites/light_off.png");

@@ -26,6 +26,7 @@ public class DefectiveLight extends Light implements Repairable {
 }
 public void myLightOnOff(){
         if(randomNumber(0, 20)==1){
+            repair();
             this.save -=0.0166;
             if(isRepairing){
                 return;

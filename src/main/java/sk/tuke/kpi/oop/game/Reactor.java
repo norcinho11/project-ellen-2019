@@ -35,7 +35,8 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         temperature = 0;
         damage = 0;
         isOn = false;
-        Set<EnergyConsumer> devices = new HashSet<>();
+       // Set<EnergyConsumer> devices = new HashSet<>();
+       // devices.add(device);
         defaultReactor = new Animation("sprites/reactor.png");
         normalReactor = new Animation("sprites/reactor_on.png", 80, 80, 0.1f, Animation.PlayMode.LOOP_PINGPONG);
         hotReactor = new Animation("sprites/reactor_hot.png", 80, 80, 0.05f, Animation.PlayMode.LOOP_PINGPONG);
@@ -61,7 +62,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         } else {
             this.temperature += (newIncrement * 2);
         }
-
+        if(this.temperature>6000){
+            this.damage=100;
+        }
         this.temperature = Math.min(6000, this.temperature);
 
         if (this.temperature > 2000) {
@@ -103,7 +106,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     }
 @Override
     public boolean repair() {
-
+    if(!isOn){
+        return false;
+    }
         if (this.damage >= 0 && this.damage < 100) {
             if (this.damage > 50) {
                 this.damage -= 50;
@@ -149,7 +154,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         return isOn;
     }
 
-    public void addDevice(EnergyConsumer device) {  //add more devices, meh
+    public void addDevice(EnergyConsumer device) {//add more devices, meh
         this.device = device;
         device.setPowered(isOn());
         if (this.device == null) {
