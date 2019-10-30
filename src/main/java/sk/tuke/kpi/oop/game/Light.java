@@ -37,21 +37,21 @@ private void changeLightAnimation(){
 
     @Override
     public void turnOn() {
-        if(!this.electricityFlow){
-            return;
-        }
             this.IsLightning = true;
-            this.electricityFlow=true;
           changeLightAnimation();
     }
+
 
     @Override
     public void turnOff() {
             this.IsLightning = false;
-            this.electricityFlow=true;
             changeLightAnimation();
     }
     void toogle() {
+        this.IsLightning = !this.IsLightning;
+        changeLightAnimation();
+    }
+    /*
         if(!this.electricityFlow){
             return;
         }
@@ -62,7 +62,7 @@ private void changeLightAnimation(){
             turnOff();
             return;
         }
-    }
+   */
 
     @Override
     public boolean isOn() {

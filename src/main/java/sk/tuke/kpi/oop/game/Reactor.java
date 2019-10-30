@@ -61,8 +61,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         } else {
             this.temperature += (newIncrement * 2);
         }
-        if(this.temperature>6000){
+        if(this.temperature>=6000 && damage !=100){
             this.damage=100;
+            turnOff();
         }
         this.temperature = Math.min(6000, this.temperature);
 

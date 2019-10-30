@@ -17,7 +17,7 @@ public class Cooler extends AbstractActor implements Switchable{
 
     public Cooler(Reactor reactor){
         CoolerState=false;
-        coolerAnimation = new Animation("sprites/fan.png", 32,32,0.0f );
+        coolerAnimation = new Animation("sprites/fan.png", 32,32 );
         setAnimation(coolerAnimation);
         this.reactor=reactor;
 
@@ -27,7 +27,7 @@ public class Cooler extends AbstractActor implements Switchable{
         if(this.CoolerState==false){
             this.CoolerState=true;
             setAnimation(coolerAnimation);
-            this.coolerAnimation.setFrameDuration(0.2f);
+            this.coolerAnimation.play();
 
         }
     }
@@ -36,7 +36,7 @@ public class Cooler extends AbstractActor implements Switchable{
         if(this.CoolerState==true){
             this.CoolerState=false;
             setAnimation(coolerAnimation);
-            this.coolerAnimation.setFrameDuration(0.0f);
+            this.coolerAnimation.stop();
         }
     }
     @Override
