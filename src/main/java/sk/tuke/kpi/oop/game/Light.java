@@ -35,22 +35,28 @@ private void changeLightAnimation(){
     @Override
     public void turnOn() {
             this.IsLightning = true;
+            this.electricityFlow=true;
           changeLightAnimation();
     }
 
     @Override
     public void turnOff() {
             this.IsLightning = false;
+            this.electricityFlow=true;
             changeLightAnimation();
     }
 
     void toogle() {
         if (this.electricityFlow && !this.IsLightning) {
-            this.IsLightning=true;
-            changeLightAnimation();
+           if(this.electricityFlow){
+               return;
+            }
+            turnOn();
         } if(this.electricityFlow && this.IsLightning){
-            this.IsLightning=false;
-            changeLightAnimation();
+            if(!this.electricityFlow) {
+                return;
+            }
+            turnOff();
         }
     }
 

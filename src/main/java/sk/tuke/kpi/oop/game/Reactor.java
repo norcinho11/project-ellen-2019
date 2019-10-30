@@ -7,8 +7,8 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
 
 
-import java.util.HashSet;
-import java.util.Set;
+//import java.util.HashSet;
+//import java.util.Set;
 
 public class Reactor extends AbstractActor implements Switchable, Repairable {
 
@@ -35,7 +35,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         temperature = 0;
         damage = 0;
         isOn = false;
-       Set<EnergyConsumer> devices = new HashSet<>();
+      // Set<EnergyConsumer> devices = new HashSet<>();
         defaultReactor = new Animation("sprites/reactor.png");
         normalReactor = new Animation("sprites/reactor_on.png", 80, 80, 0.1f, Animation.PlayMode.LOOP_PINGPONG);
         hotReactor = new Animation("sprites/reactor_hot.png", 80, 80, 0.05f, Animation.PlayMode.LOOP_PINGPONG);
