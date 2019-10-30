@@ -5,9 +5,8 @@ import sk.tuke.kpi.oop.game.DefectiveLight;
 
 public class Wrench extends BreakableTool<DefectiveLight> {
 
-    public Wrench(int remainingUses) {
-        super(remainingUses);
-        setRemainingUses(2);
+    public Wrench() {
+        super(2);
         if (this == null) {
             return;
         }
@@ -29,5 +28,6 @@ public class Wrench extends BreakableTool<DefectiveLight> {
                 return;
         }
     }
+
 }
 
