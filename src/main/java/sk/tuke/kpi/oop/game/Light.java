@@ -22,7 +22,7 @@ private void changeLightAnimation(){
         if(this.IsLightning && this.isElectricityFlow()){
             setAnimation(light_on);
         }
-        if(!this.IsLightning && !this.isElectricityFlow()){
+        if(!this.IsLightning && this.isElectricityFlow()){
             setAnimation(light_off);
         }
 }

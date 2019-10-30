@@ -14,6 +14,9 @@ public class Mjolnir extends Hammer {
 
     @Override
     public void useWith(Reactor actor) {
+        if(actor==null){
+            return;
+        }
         super.useWith(actor);
     }
 }

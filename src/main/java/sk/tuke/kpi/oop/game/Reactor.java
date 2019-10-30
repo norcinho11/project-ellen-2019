@@ -5,8 +5,7 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
-import sk.tuke.kpi.oop.game.tools.FireExtinguisher;
-import sk.tuke.kpi.oop.game.tools.Hammer;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +22,6 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     private Animation extinguishedReactor;
     private EnergyConsumer device;
     private boolean isOn;
-    private Set<EnergyConsumer> devices;
 
     public int getDamage() {
         return this.damage;
@@ -37,7 +35,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         temperature = 0;
         damage = 0;
         isOn = false;
-        devices =new HashSet<>();
+        Set<EnergyConsumer> devices = new HashSet<>();
         defaultReactor = new Animation("sprites/reactor.png");
         normalReactor = new Animation("sprites/reactor_on.png", 80, 80, 0.1f, Animation.PlayMode.LOOP_PINGPONG);
         hotReactor = new Animation("sprites/reactor_hot.png", 80, 80, 0.05f, Animation.PlayMode.LOOP_PINGPONG);
@@ -50,7 +48,6 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
 
     public void increaseTemperature(int increment) {
         int temperature;
-        float damage;
         if (!this.isOn) {
             return;
         }

@@ -16,6 +16,7 @@ public class Gameplay extends Scenario {
 
     }
 
+
     @Override
     public void setupPlay(@NotNull Scene scene) {
         Reactor reactor = new Reactor();
@@ -28,15 +29,15 @@ public class Gameplay extends Scenario {
         Helicopter helicopter = new Helicopter();
         scene.addActor(helicopter,125,125);
         new ActionSequence<>(
-        new Wait<>(5),
-        new Invoke<>(cooler::turnOn)).scheduleFor(cooler);
+            new Wait<>(5),
+            new Invoke<>(cooler::turnOn)
+        ).scheduleFor(cooler);
 
-        new Invoke<>(() -> {
-         reactor.repair();
-        } );
         new When<>(
-          () -> reactor.getTemperature() >= 3000,
-         new Invoke<>(() -> reactor.repair())
+            () -> {
+                return reactor.getTemperature() >= 3000;
+            },
+            new Invoke<>(() -> reactor.repair())
         ).scheduleFor(reactor);
     }
 }
