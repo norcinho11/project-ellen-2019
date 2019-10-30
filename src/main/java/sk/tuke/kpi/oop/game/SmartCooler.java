@@ -38,6 +38,9 @@ public class SmartCooler extends Cooler {
          this.turnOff();
      }
      if(isOn()){
+         if(this == null){
+             return;
+         }
          this.getReactor().decreaseTemperature(1);
      }
      if (!isOn()){

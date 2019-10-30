@@ -75,12 +75,16 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     }
 
     public void decreaseTemperature(int decrement) {
-        decrement = Math.max(0, decrement);
+        if(!this.isOn){
+            return;
+        }
+        int newDecrement;
+        newDecrement = Math.max(0, decrement);
         if (this.isOn) {
             if (this.damage < 50) {
-                this.temperature -= decrement;
+                this.temperature -= newDecrement;
             } else if (this.damage < 100) {
-                this.temperature -= (decrement / 2);
+                this.temperature -= (newDecrement / 2);
             }
             if (this.temperature < 0) {
                 this.temperature = 0;
@@ -162,6 +166,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             device.setPowered(isOn());
         }
         if(this.isOn==false){
+            device.setPowered(false);
             return;
         }
 //shit+f6 ... refactor
