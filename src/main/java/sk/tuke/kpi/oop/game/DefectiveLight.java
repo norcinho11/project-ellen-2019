@@ -25,15 +25,16 @@ public class DefectiveLight extends Light implements Repairable {
         return Math.floor(Math.random() * (newMax - newMin)) + newMin;
 }
 public void myLightOnOff(){
+    if(isRepairing){
+        this.save -=0.0166;
+
+        if(this.save<0){
+            isRepairing=false;
+        }
+        return;
+    }
         if(randomNumber(0, 20)==1){
-            repair();
-            this.save -=0.0166;
-            if(isRepairing){
-                return;
-            }
-            if(this.save<0){
-                return;
-            }
+
             //super.setElectricityFlow(true || false);
             this.toogle();
         }
@@ -48,7 +49,7 @@ public void myLightOnOff(){
 
     @Override
     public boolean repair() {
-        if(isRepairing==true){
+        if(isRepairing){
             return false;
         }
         isRepairing=true;

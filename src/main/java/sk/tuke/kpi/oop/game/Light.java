@@ -41,17 +41,16 @@ private void changeLightAnimation(){
     @Override
     public void turnOff() {
             this.IsLightning = false;
-
             changeLightAnimation();
     }
 
     void toogle() {
         if (this.electricityFlow && !this.IsLightning) {
             this.IsLightning=true;
-            setAnimation(light_on);
+            changeLightAnimation();
         } if(this.electricityFlow && this.IsLightning){
-            setAnimation(light_off);
             this.IsLightning=false;
+            changeLightAnimation();
         }
     }
 
