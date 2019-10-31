@@ -1,6 +1,7 @@
 package sk.tuke.kpi.oop.game;
 
 
+import sk.tuke.kpi.gamelib.actions.ActionSequence;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.actions.When;
@@ -29,8 +30,9 @@ public class TimeBomb extends AbstractActor {
             isBombActivated = true;
             setAnimation(flashBombAnimation);
             //    timeToDetonation -=0.0166f;
-                new Wait<>(this.timeToDetonation);
-                new Invoke<>(this::helpActivate).scheduleFor(this);
+            new ActionSequence<>(
+                new Wait<>(this.timeToDetonation),
+                new Invoke<>(this::helpActivate)).scheduleFor(this);
 
              //   setAnimation(null);
         }

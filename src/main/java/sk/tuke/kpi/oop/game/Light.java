@@ -59,6 +59,7 @@ private void changeLightAnimation(){
     @Override
     public void setPowered(boolean isOn) {
             this.electricityFlow = isOn;
+            changeLightAnimation();
 
         }
 
