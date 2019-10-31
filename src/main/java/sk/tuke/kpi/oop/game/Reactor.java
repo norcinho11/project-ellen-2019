@@ -162,7 +162,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         }
         if(this.isOn) {
             this.device = device;
-            device.setPowered(isOn());
+            device.setPowered(this.isOn());
         }
         if(this.isOn==false){
             device.setPowered(false);
@@ -172,7 +172,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     }
 
     public void removeDevice(EnergyConsumer device) {
-        device.setPowered(false);
+        device.setPowered(this.isOn());
         this.device = null;
             }
 
