@@ -19,6 +19,12 @@ public class Gameplay extends Scenario {
 
     @Override
     public void setupPlay(@NotNull Scene scene) {
+        TimeBomb chain1 = new TimeBomb(10);
+        TimeBomb chain2 = new TimeBomb(10);
+        scene.addActor(chain1, 265, 15);
+        scene.addActor(chain2, 25, 180);
+        Teleport teleport = new Teleport(null);
+        scene.addActor(teleport, 270, 270);
         Reactor reactor = new Reactor();
         Hammer hammer = new Hammer();
         scene.addActor(reactor,64,64);
