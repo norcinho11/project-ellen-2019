@@ -15,7 +15,9 @@ public class ChainBomb extends TimeBomb {
         super.addedToScene(scene);
     }
     public void location(){
-        Ellipse2D.Float chain1=new Ellipse2D.Float(getPosX(), getPosY(), getWidth(), getHeight());
+        Ellipse2D.Float chain1=new Ellipse2D.Float(getPosX(), getPosY(), 50, 50);
+        Ellipse2D.Float chain2 = new Ellipse2D.Float(getPosX(),getPosY(),getWidth(),getHeight());
+
     }
     public void activateAllChainBomb(){
         if(this== getScene().getFirstActorByType(TimeBomb.class)){

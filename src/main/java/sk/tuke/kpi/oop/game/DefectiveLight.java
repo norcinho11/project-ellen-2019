@@ -15,6 +15,7 @@ public class DefectiveLight extends Light implements Repairable {
 
     public DefectiveLight(){
         if(!super.isElectricityFlow()){
+
             return;
         }
         isRepairing=false;
@@ -27,7 +28,7 @@ public class DefectiveLight extends Light implements Repairable {
         double newMin=Math.ceil(min);
         return Math.floor(Math.random() * (newMax - newMin)) + newMin;
 }
-public void myLightOnOff(){
+private void myLightOnOff(){
     if(isRepairing){
         if(!super.isElectricityFlow()){
             return;

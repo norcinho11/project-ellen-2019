@@ -32,6 +32,7 @@ public class TimeBomb extends AbstractActor {
             new ActionSequence<>(
                 new Wait<>(this.timeToDetonation),
                 new Invoke<>(this::helpActivate)).scheduleFor(this);
+             //   setAnimation(null);
         }
     }
     public void helpActivate(){
