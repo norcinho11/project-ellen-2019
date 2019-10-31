@@ -14,7 +14,7 @@ public class DefectiveLight extends Light implements Repairable {
     }
 
     public DefectiveLight(){
-        if(super.isElectricityFlow()==false){
+        if(!super.isElectricityFlow()){
             return;
         }
         isRepairing=false;
