@@ -1,5 +1,7 @@
 package sk.tuke.kpi.oop.game;
 
+import org.jetbrains.annotations.NotNull;
+import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.ActionSequence;
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
@@ -12,6 +14,11 @@ public class TimeBomb extends AbstractActor {
     private Animation flashBombAnimation;
     private Animation detonationBomb;
     private boolean isBombActivated;
+
+    @Override
+    public void removedFromScene(@NotNull Scene scene) {
+        super.removedFromScene(scene);
+    }
 
     public TimeBomb(float timeToDetonation) {
         this.timeToDetonation=timeToDetonation;
@@ -29,15 +36,15 @@ public class TimeBomb extends AbstractActor {
             isBombActivated = true;
             setAnimation(flashBombAnimation);
             //    timeToDetonation -=0.0166f;
-            new ActionSequence<>(
-                new Wait<>(this.timeToDetonation),
-                new Invoke<>(this::helpActivate)).scheduleFor(this);
+                new Wait<>(this.timeToDetonation);
+                new Invoke<>(this::helpActivate).scheduleFor(this);
+
              //   setAnimation(null);
         }
     }
-    public void helpActivate(){
+    private void helpActivate(){
         setAnimation(detonationBomb);
-        new When<>(()->detonationBomb.getCurrentFrameIndex()==8,new Invoke<>(()->getScene().removeActor(this))).scheduleFor(this);
+        new When<>(()->detonationBomb.getCurrentFrameIndex()==9,new Invoke<>(()->getScene().removeActor(this))).scheduleFor(this);
     }
     public boolean isActivated() {
         if (isBombActivated) {
