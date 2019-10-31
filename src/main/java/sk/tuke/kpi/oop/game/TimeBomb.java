@@ -44,7 +44,7 @@ public class TimeBomb extends AbstractActor {
     }
     private void helpActivate(){
         setAnimation(detonationBomb);
-        new When<>(()->detonationBomb.getCurrentFrameIndex()==9,new Invoke<>(()->getScene().removeActor(this))).scheduleFor(this);
+        new When<>(()->detonationBomb.getCurrentFrameIndex()==7,new Invoke<>(()->getScene().removeActor(this))).scheduleFor(this);
     }
     public boolean isActivated() {
         if (isBombActivated) {
