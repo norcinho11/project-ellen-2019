@@ -1,8 +1,6 @@
 package sk.tuke.kpi.oop.game;
 
-import org.jetbrains.annotations.NotNull;
-import sk.tuke.kpi.gamelib.Scene;
-import sk.tuke.kpi.gamelib.actions.ActionSequence;
+
 import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.actions.When;
@@ -14,11 +12,6 @@ public class TimeBomb extends AbstractActor {
     private Animation flashBombAnimation;
     private Animation detonationBomb;
     private boolean isBombActivated;
-
-    @Override
-    public void removedFromScene(@NotNull Scene scene) {
-        super.removedFromScene(scene);
-    }
 
     public TimeBomb(float timeToDetonation) {
         this.timeToDetonation=timeToDetonation;
