@@ -37,6 +37,9 @@ private void changeLightAnimation(){
 
     @Override
     public void turnOn() {
+        if(!this.electricityFlow){
+            return;
+        }
         this.IsLightning = true;
         setAnimation(light_on);
 
@@ -64,7 +67,12 @@ private void changeLightAnimation(){
     @Override
     public void setPowered(boolean isOn) {
         this.electricityFlow = isOn;
-
+if(!this.electricityFlow){
+    setAnimation(light_off);
+}
+if(this.IsLightning && this.electricityFlow && (getAnimation() != light_on)){
+    setAnimation(light_on);
+}
         }
 
 }
