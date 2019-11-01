@@ -4,6 +4,7 @@ package sk.tuke.kpi.oop.game;
 import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.actions.Invoke;
+import sk.tuke.kpi.gamelib.actions.While;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.framework.Player;
 import sk.tuke.kpi.gamelib.framework.actions.Loop;
@@ -12,7 +13,7 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 public class Teleport extends AbstractActor {
     private Teleport destinationTeleport;
     private boolean avaibleToTeleport;
-    private  Animation teleportAnimation;
+
     public Teleport getDestination(){
         return destinationTeleport;
     }
@@ -30,7 +31,7 @@ public class Teleport extends AbstractActor {
 
 
     public Teleport(Teleport teleport){
-        teleportAnimation = new Animation("sprites/lift.png");
+        Animation teleportAnimation = new Animation("sprites/lift.png");
         setAnimation(teleportAnimation);
         this.setDestination(teleport);
     }
