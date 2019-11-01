@@ -10,16 +10,16 @@ import sk.tuke.kpi.gamelib.framework.actions.Loop;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 
 public class Teleport extends AbstractActor {
-    private Teleport destination;
+    private Teleport destinationTeleport;
     private boolean avaibleToTeleport;
     private  Animation teleportAnimation;
     public Teleport getDestination(){
-        return destination;
+        return destinationTeleport;
     }
 
     public void setDestination(Teleport destinationTeleport){
         if(this == destinationTeleport){ return;}
-            this.destination = destinationTeleport; }
+            this.destinationTeleport = destinationTeleport; }
 
     @Override
     public void addedToScene(@NotNull Scene scene) {
@@ -36,7 +36,7 @@ public class Teleport extends AbstractActor {
     }
 
     public void teleportPlayer(Player player){
-        if(this != this.destination && (this.destination != null)){
+        if(this != this.destinationTeleport && (this.destinationTeleport != null)){
             if(this.avaibleToTeleport && (!this.intersects(player))){
                 this.avaibleToTeleport = false;
             }
