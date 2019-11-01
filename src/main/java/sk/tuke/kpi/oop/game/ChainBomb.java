@@ -13,8 +13,7 @@ public class ChainBomb extends TimeBomb {
 
     private Rectangle2D.Float area;
     private Ellipse2D.Float area2;
-    private List<Actor> listOfActors;
-    private HashSet<ChainBomb>listOfChainBombs;
+    private List<ChainBomb>listOfChainBombs;
 
     public ChainBomb(float timeToDetonation) {
         super(timeToDetonation);
@@ -31,7 +30,7 @@ public class ChainBomb extends TimeBomb {
 
     }
     private void collectBombs(){
-        this.listOfActors = (List<Actor>) getScene().getActors();
+        List<Actor> listOfActors = (List<Actor>) getScene().getActors();
         for(Actor actor: listOfActors){
             if(actor instanceof ChainBomb){
             listOfChainBombs.add((ChainBomb) actor);
