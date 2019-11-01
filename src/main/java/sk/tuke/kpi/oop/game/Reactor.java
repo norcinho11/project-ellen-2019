@@ -5,10 +5,8 @@ import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.actions.PerpetualReactorHeating;
-
-
-//import java.util.HashSet;
-//import java.util.Set;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Reactor extends AbstractActor implements Switchable, Repairable {
 
@@ -22,6 +20,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     private Animation extinguishedReactor;
     private EnergyConsumer device;
     private boolean isOn;
+    private Set<EnergyConsumer>devices;
 
     public int getDamage() {
         return this.damage;
@@ -35,7 +34,7 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         temperature = 0;
         damage = 0;
         isOn = false;
-      // Set<EnergyConsumer> devices = new HashSet<>();
+       devices = new HashSet<>();
         defaultReactor = new Animation("sprites/reactor.png");
         normalReactor = new Animation("sprites/reactor_on.png", 80, 80, 0.1f, Animation.PlayMode.LOOP_PINGPONG);
         hotReactor = new Animation("sprites/reactor_hot.png", 80, 80, 0.05f, Animation.PlayMode.LOOP_PINGPONG);
@@ -156,19 +155,25 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         return isOn;
     }
 
-    public void addDevice(EnergyConsumer device) {//add more devices, meh
-        if (this.device == null) {
-            return;
+    public void addDevice() {//add more devices, meh
+        for (EnergyConsumer device : devices) {
+            devices.add(device);
+
+            if (this.device == null) {
+                return;
+            }
         }
-        if(this.isOn) {
-            this.device = device;
-            device.setPowered(this.isOn());
-        }
-        if(this.isOn==false){
-            device.setPowered(false);
-            return;
-        }
+        for (EnergyConsumer device : devices) {
+            if (this.isOn) {
+                this.device = device;
+                device.setPowered(this.isOn());
+            }
+            if (!this.isOn) {
+                device.setPowered(false);
+                return;
+            }
 //shit+f6 ... refactor
+        }
     }
 
     public void removeDevice(EnergyConsumer device) {
