@@ -11,7 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ChainBomb extends TimeBomb {
+public class
+ChainBomb extends TimeBomb {
 
 
     private Set<ChainBomb> listOfChainBombs;
@@ -32,6 +33,7 @@ public class ChainBomb extends TimeBomb {
             }
             }
         }
+       @Override
         public void activate () {
             super.activate();
             collectBombs();

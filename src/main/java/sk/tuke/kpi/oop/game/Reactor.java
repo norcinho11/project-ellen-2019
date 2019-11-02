@@ -63,6 +63,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         if(this.temperature>=6000 && damage !=100){
             this.damage=100;
             turnOff();
+            for(EnergyConsumer device : devices){
+                device.setPowered(false);
+            }
         }
             if (this.temperature > 2000) {
             temperature = this.temperature - 2000;
@@ -136,6 +139,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
         if (this.damage == 100) {
             turnOff();
         }
+        for(EnergyConsumer device:devices){
+            device.setPowered(true);
+        }
     }
 
     public void turnOff() {
@@ -146,6 +152,9 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
             setAnimation(brokenReactor);
             //make sure temp/damage wont be changeable
 
+        }
+        for (EnergyConsumer device:devices){
+            device.setPowered(false);
         }
 
     }

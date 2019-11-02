@@ -25,7 +25,6 @@ private void changeLightAnimation(){
         }
         if(!this.electricityFlow){
             setAnimation(light_off);
-            return;
         }
         setAnimation(light_off);
 }
