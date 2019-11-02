@@ -10,6 +10,11 @@ import sk.tuke.kpi.gamelib.graphics.Animation;
 
 public class TimeBomb extends AbstractActor {
     private float timeToDetonation;
+
+    public float getTimeToDetonation() {
+        return timeToDetonation;
+    }
+
     private Animation flashBombAnimation;
     private Animation detonationBomb;
     private boolean isBombActivated;
