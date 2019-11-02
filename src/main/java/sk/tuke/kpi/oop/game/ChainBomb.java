@@ -46,7 +46,7 @@ public class ChainBomb extends TimeBomb {
         float centerPosY=(this.getPosY()-50f+8f);
         float centerPosX=(this.getPosX()-50f+8f);
 
-    Ellipse2D areaOfBomb = new Ellipse2D.Float(getPosX(), getPosY(), (2.0f*50.0f), (2.0f*50.0f));
+    Ellipse2D areaOfBomb = new Ellipse2D.Float(centerPosX, centerPosY, (2.0f*50.0f), (2.0f*50.0f));
 
     for(ChainBomb chainBomb:listOfChainBombs){
         float myChainBombPosY=(float)chainBomb.getPosY();
