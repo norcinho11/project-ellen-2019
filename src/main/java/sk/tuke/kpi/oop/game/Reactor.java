@@ -176,9 +176,24 @@ public class Reactor extends AbstractActor implements Switchable, Repairable {
     }
 
     public void removeDevice(EnergyConsumer device) {
-        device.setPowered(this.isOn());
-        this.device = null;
+        devices.remove(device);
+
+        if (this.device == null) {
+            return;
+
+        }
+        for (EnergyConsumer myDevice : devices) {
+            if (this.isOn) {
+                this.device = myDevice;
+                myDevice.setPowered(!this.isOn());
             }
+            if (!this.isOn) {
+                myDevice.setPowered(false);
+                return;
+            }
+//shit+f6 ... refactor
+        }
+    }
 
     public boolean extinguish() {
         setAnimation(extinguisherAnimation);
