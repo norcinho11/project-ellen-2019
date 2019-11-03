@@ -37,12 +37,12 @@ ChainBomb extends TimeBomb {
         for (Actor actor : listOfActors) {
             if (actor instanceof ChainBomb) {
                 listOfChainBombs.add((ChainBomb) actor);
-
             }
         }
     }
 
     public void activate () {
+        super.activate();
         collectBombs();
         setAnimation(bombActivated);
         new ActionSequence<>(

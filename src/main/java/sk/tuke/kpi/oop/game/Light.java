@@ -36,9 +36,9 @@ public class Light extends AbstractActor implements Switchable,EnergyConsumer {
 
     @Override
     public void turnOn() {
+        this.IsLightning = true;
         if(this.electricityFlow) {
             setAnimation(light_on);
-            this.IsLightning = true;
         }
     }
 
