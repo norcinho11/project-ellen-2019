@@ -11,14 +11,14 @@ public class Light extends AbstractActor implements Switchable,EnergyConsumer {
 
 
     public Light() {
-        electricityFlow = true;
+        electricityFlow = false;
         IsLightning = false;
         light_on = new Animation("sprites/light_on.png");
         light_off = new Animation("sprites/light_off.png");
         setAnimation(light_off);
 
     }
-private void changeLightAnimation(){
+    private void changeLightAnimation(){
         if(this.getAnimation()==light_off && this.electricityFlow){
             setAnimation(light_on);
             return;
@@ -27,7 +27,7 @@ private void changeLightAnimation(){
             setAnimation(light_off);
         }
         setAnimation(light_off);
-}
+    }
 
     public boolean isElectricityFlow() {
         return this.electricityFlow;
@@ -36,22 +36,16 @@ private void changeLightAnimation(){
 
     @Override
     public void turnOn() {
-        if(!this.electricityFlow){
-            setAnimation(light_off);
-            this.IsLightning=true;
-        }
         if(this.electricityFlow) {
-
-            this.IsLightning = true;
-
             setAnimation(light_on);
+            this.IsLightning = true;
         }
     }
 
     @Override
     public void turnOff() {
-            this.IsLightning = false;
-            setAnimation(light_off);
+        this.IsLightning = false;
+        setAnimation(light_off);
     }
     void toggle() {
         this.IsLightning = !this.IsLightning;
@@ -70,12 +64,12 @@ private void changeLightAnimation(){
     @Override
     public void setPowered(boolean isOn) {
         this.electricityFlow = isOn;
-if(!this.electricityFlow && this.IsLightning){
-    setAnimation(light_off);
-}
-if(this.IsLightning && this.electricityFlow && (getAnimation() != light_on)){
-    setAnimation(light_on);
-}
+        if(!this.electricityFlow && this.IsLightning){
+            setAnimation(light_off);
         }
+        if(this.IsLightning && this.electricityFlow && (getAnimation() != light_on)){
+            setAnimation(light_on);
+        }
+    }
 
 }
