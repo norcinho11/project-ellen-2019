@@ -10,7 +10,7 @@ import sk.tuke.kpi.oop.game.items.Usable;
 
 
 public class Use<A extends Actor> extends AbstractAction<A> {
-    Usable<A> usableActor;
+  private   Usable<A> usableActor;
 
     public Use(Usable<A> usable){
         this.usableActor = usable;

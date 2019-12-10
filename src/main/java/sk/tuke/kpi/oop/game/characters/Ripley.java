@@ -9,7 +9,7 @@ import sk.tuke.kpi.oop.game.items.Backpack;
 import static sk.tuke.kpi.gamelib.graphics.Animation.PlayMode.LOOP_PINGPONG;
 
 public class Ripley extends AbstractActor implements Movable, Keeper {
-    Animation playerAnimation;
+    private Animation playerAnimation;
     private int energy;
     private int ammo;
     private Backpack myBackpack;

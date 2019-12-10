@@ -9,7 +9,7 @@ public class Move implements Action<Movable> {
     private Direction direction;
     private float duration;
     private float defaultDuration;
-    Movable actor;
+    private Movable actor;
     private boolean isDoneBoolean;
     private boolean isCalled;
 

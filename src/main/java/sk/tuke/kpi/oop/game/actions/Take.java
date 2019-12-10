@@ -8,8 +8,8 @@ import sk.tuke.kpi.oop.game.items.Collectible;
 
 
 public class Take <K extends Keeper> extends AbstractAction<K> {
-    Collectible collectibleActor;
-    Keeper keeper;
+  private   Collectible collectibleActor;
+  private   Keeper keeper;
 
     /**
      * Executes (one step of) the action. Called by the scene this
