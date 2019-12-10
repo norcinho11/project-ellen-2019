@@ -1,9 +1,9 @@
 package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
-import sk.tuke.kpi.oop.game.Reactor;
+import sk.tuke.kpi.oop.game.Repairable;
 
-public class Hammer extends BreakableTool<Reactor> implements Collectible{
+public class Hammer extends BreakableTool<Repairable> implements Collectible{
 
 
     public Hammer() {
@@ -16,7 +16,7 @@ public class Hammer extends BreakableTool<Reactor> implements Collectible{
     }
 
     @Override
-    public void useWith(Reactor actor) {
+    public void useWith(Repairable actor) {
         if(actor==null){
             return;
         }
@@ -27,8 +27,8 @@ public class Hammer extends BreakableTool<Reactor> implements Collectible{
     }
 
     @Override
-    public Class<Reactor> getUsingActorClass() {
-        return Reactor.class;
+    public Class<Repairable> getUsingActorClass() {
+        return Repairable.class;
     }
 }
 

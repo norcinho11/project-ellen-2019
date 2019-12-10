@@ -1,5 +1,6 @@
 package sk.tuke.kpi.oop.game.characters;
 
+
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.Keeper;
@@ -8,8 +9,7 @@ import sk.tuke.kpi.oop.game.items.Backpack;
 
 import static sk.tuke.kpi.gamelib.graphics.Animation.PlayMode.LOOP_PINGPONG;
 
-public class Ripley extends AbstractActor implements Movable, Keeper {
-    private Animation playerAnimation;
+public class Ripley extends AbstractActor implements Movable, Keeper, Alive {
     private int energy;
     private int ammo;
     private Backpack myBackpack;
@@ -18,7 +18,7 @@ public class Ripley extends AbstractActor implements Movable, Keeper {
         super("Ellen");
         energy = 100;
         ammo = 0;
-        playerAnimation = new Animation("sprites/player.png", 32, 32, 0.1f, LOOP_PINGPONG);
+      Animation  playerAnimation = new Animation("sprites/player.png", 32, 32, 0.1f, LOOP_PINGPONG);
         setAnimation(playerAnimation);
         myBackpack = new Backpack("Ripley's backpack", 10);
         this.stoppedMoving();
@@ -58,8 +58,11 @@ public class Ripley extends AbstractActor implements Movable, Keeper {
         return this.myBackpack;
     }
 
-    public void showRipleyState(){
-        //meh  1.7
-    }
 
-}//3.4
+
+
+    @Override
+    public Health getHealth() {
+        return null;
+    }
+}

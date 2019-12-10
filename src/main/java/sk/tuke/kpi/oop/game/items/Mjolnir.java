@@ -1,7 +1,7 @@
 package sk.tuke.kpi.oop.game.items;
 
 import sk.tuke.kpi.gamelib.graphics.Animation;
-import sk.tuke.kpi.oop.game.Reactor;
+import sk.tuke.kpi.oop.game.Repairable;
 
 
 public class Mjolnir extends Hammer {
@@ -13,7 +13,7 @@ public class Mjolnir extends Hammer {
 }
 
     @Override
-    public void useWith(Reactor actor) {
+    public void useWith(Repairable actor) {
         if(actor==null){
             return;
         }

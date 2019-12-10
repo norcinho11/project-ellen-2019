@@ -45,10 +45,20 @@ public class KeeperController implements KeyboardListener {
                     }
                 }
             }
-          // case B: {
-              // 2.11
+           case B: {
+               try {
+                   Usable<?> usable = (Usable<?>) actor.getBackpack().peek();
+                   new Use<>(usable).scheduleForIntersectingWith(actor);
+               }
+                catch (Exception ex) {
+                    actor.getScene().getOverlay().drawText(ex.getMessage(), 300, 300).showFor(2);
 
-           //}
+                }
+                   break;
+
+
+
+           }
            default:   return;
         }
     }
