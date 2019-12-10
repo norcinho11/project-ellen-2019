@@ -1,4 +1,4 @@
-package sk.tuke.kpi.oop.game;
+package sk.tuke.kpi.oop.game.scenarios;
 
 import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.Scene;
@@ -7,12 +7,16 @@ import sk.tuke.kpi.gamelib.actions.Invoke;
 import sk.tuke.kpi.gamelib.actions.Wait;
 import sk.tuke.kpi.gamelib.actions.When;
 import sk.tuke.kpi.gamelib.framework.Scenario;
-import sk.tuke.kpi.oop.game.tools.Hammer;
+import sk.tuke.kpi.oop.game.Cooler;
+import sk.tuke.kpi.oop.game.Helicopter;
+import sk.tuke.kpi.oop.game.Reactor;
+import sk.tuke.kpi.oop.game.TimeBomb;
 
 
-public class Gameplay extends Scenario {
 
-    public Gameplay(){
+public class TrainingGameplay extends Scenario {
+
+    public TrainingGameplay(){
 
     }
 
@@ -24,7 +28,7 @@ public class Gameplay extends Scenario {
         scene.addActor(chain1, 265, 15);
         scene.addActor(chain2, 25, 180);
         Reactor reactor = new Reactor();
-        Hammer hammer = new Hammer();
+//        Hammer hammer = new Hammer();
         scene.addActor(reactor,64,64);
         reactor.turnOn();
         Cooler cooler= new Cooler(reactor);
