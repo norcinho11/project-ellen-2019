@@ -2,7 +2,7 @@ package sk.tuke.kpi.oop.game;
 
 public enum Direction {
     NORTH(0, 1), EAST(-1, 0), SOUTH(0, -1), WEST(1, 0),
-    NORTH_EAST(-1, 1), NORTH_WEST(1, 1), SOUTH_EAST(-1, -1), SOUTH_WEST(1, -1), NONE(0, 0);
+    NORTHEAST(-1, 1), NORTHWEST(1, 1), SOUTHEAST(-1, -1), SOUTHWEST(1, -1), NONE(0, 0);
 
     private final int dx;
     private final int dy;
@@ -24,20 +24,20 @@ public enum Direction {
     public float getAngle() {
         switch (this) {
             case EAST:
-                return 360f - 270f;
-            case WEST:
                 return 360f - 90f;
+            case WEST:
+                return 360f - 270f;
             case NORTH:
                 return 0f;
             case SOUTH:
                 return 360f - 180f;
-            case NORTH_EAST:
+            case NORTHEAST:
                 return  45f;
-            case NORTH_WEST:
+            case NORTHWEST:
                 return 360f- 45f;
-            case SOUTH_EAST:
+            case SOUTHEAST:
                 return 180f - 45f;
-            case SOUTH_WEST:
+            case SOUTHWEST:
                 return 180f + 45f;
             default: return -1f;
         }

@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class MovableController implements KeyboardListener {
     private Movable actor;
-    private Move movementStorage;
+    private Move<Movable> movementStorage;
     private Input.Key defaultKey;
     private float max = Float.MAX_VALUE;
 
@@ -27,8 +27,8 @@ public class MovableController implements KeyboardListener {
     private  Map<Input.Key, Direction> keyDirectionMap = Map.ofEntries(
         Map.entry(Input.Key.UP, Direction.NORTH),
         Map.entry(Input.Key.DOWN,Direction.SOUTH),
-        Map.entry(Input.Key.RIGHT, Direction.WEST),
-        Map.entry(Input.Key.LEFT, Direction.EAST)
+        Map.entry(Input.Key.RIGHT, Direction.EAST),
+        Map.entry(Input.Key.LEFT, Direction.WEST)
     );
     private Set<Direction> defaultDirections = Set.of(Direction.EAST,Direction.NORTH,Direction.WEST,Direction.SOUTH);
 
@@ -43,7 +43,7 @@ public class MovableController implements KeyboardListener {
             if(movementStorage != null){
                 movementStorage.stop();
             }
-            movementStorage= new Move(keyDirectionMap.get(key).combine(keyDirectionMap.get(defaultKey)), max);
+            movementStorage= new Move<Movable>(keyDirectionMap.get(key).combine(keyDirectionMap.get(defaultKey)), max);
             movementStorage.scheduleFor(actor);
 
         }
@@ -72,7 +72,7 @@ public class MovableController implements KeyboardListener {
                         break;
                     }
                 }
-                movementStorage = new Move(keyDirectionMap.get(defaultKey), max);
+                movementStorage = new Move<Movable>(keyDirectionMap.get(defaultKey), max);
                 movementStorage.scheduleFor(actor);
             }
         }

@@ -18,12 +18,15 @@ public class Take <K extends Keeper> extends AbstractAction<K> {
      */
     @Override
     public void execute(float deltaTime) {
+        if(getActor()==null){
+            return;
+        }
       setDone(true);
         try {
             for (Actor actor : getActor().getScene().getActors()) {
                 if(actor instanceof Collectible && getActor().intersects(actor)) {
                     collectibleActor = (Collectible) actor;
-                    break;
+                    return;
                 }
             }
             getActor().getBackpack().add(collectibleActor);

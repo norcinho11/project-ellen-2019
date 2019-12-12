@@ -4,7 +4,7 @@ import sk.tuke.kpi.gamelib.actions.Action;
 import sk.tuke.kpi.oop.game.Direction;
 import sk.tuke.kpi.oop.game.Movable;
 
-public class Move implements Action<Movable> {
+public class Move<A extends Movable> implements Action<Movable> {
 //finish 3.6
     private Direction direction;
     private float duration;
@@ -31,6 +31,12 @@ public class Move implements Action<Movable> {
     public Movable getActor() {
         return actor;
     }
+
+    /**
+     * Sets actor for the action
+     *
+     * @param actor actor to be set for action
+     */
 
     public void setActor(Movable actor) {
         this.actor = actor;

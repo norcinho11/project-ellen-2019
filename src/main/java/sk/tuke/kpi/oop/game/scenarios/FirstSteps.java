@@ -4,13 +4,11 @@ import org.jetbrains.annotations.NotNull;
 import sk.tuke.kpi.gamelib.GameApplication;
 import sk.tuke.kpi.gamelib.Scene;
 import sk.tuke.kpi.gamelib.SceneListener;
-import sk.tuke.kpi.oop.game.actions.Use;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.KeeperController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.items.Ammo;
 import sk.tuke.kpi.oop.game.items.Backpack;
-import sk.tuke.kpi.oop.game.items.Energy;
 
 public class FirstSteps implements SceneListener {
     private Ripley ripley;
@@ -27,11 +25,9 @@ public class FirstSteps implements SceneListener {
         scene.addActor(ripley, 0, 0);
         MovableController movController = new MovableController(ripley);
         scene.getInput().registerListener(movController);
-        Energy energy = new Energy();
-        scene.addActor(energy, 50, 50);
         Ammo ammo = new Ammo();
         scene.addActor(ammo, 100, 100);
-        new Use<>(energy).scheduleFor(ripley);
+
 
         }
 
@@ -40,7 +36,7 @@ public class FirstSteps implements SceneListener {
         int windowHeight = scene.getGame().getWindowSetup().getHeight();
         int yTextPos = windowHeight - GameApplication.STATUS_LINE_OFFSET;
         scene.getGame().getOverlay().drawText("Energy : ", 156,yTextPos);
-        scene.getGame().getOverlay().drawText(Integer.toString(ripley.getEnergy()), 256,yTextPos);
+        scene.getGame().getOverlay().drawText(Integer.toString(ripley.getHealth()), 256,yTextPos);
 
         scene.getGame().getOverlay().drawText("Ammo : ", 356,yTextPos);
         scene.getGame().getOverlay().drawText(Integer.toString(ripley.getAmmo()), 456,yTextPos);

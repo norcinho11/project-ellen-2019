@@ -78,6 +78,9 @@ public class Backpack implements ActorContainer<Collectible> {
      */
     @Override
     public void remove(@NotNull Collectible actor) {
+        if(myRucksack==null){
+            return;
+        }
         if (getSize() == 0) {
             throw new IllegalStateException(this.getName() + " is empty");
         }
@@ -87,7 +90,10 @@ public class Backpack implements ActorContainer<Collectible> {
      * @return actor at the top of the container.
      */
     @Override
-    public Collectible peek() {
+    public Collectible peek() {// returns the first element
+        if(myRucksack ==null){
+            return null;
+        }
         if (getSize() == 0) {
             throw new IllegalStateException(this.getName() + " is empty");
         }
@@ -107,7 +113,7 @@ public class Backpack implements ActorContainer<Collectible> {
     @NotNull
     @Override
     public Iterator<Collectible> iterator() {
-
+// not sure with this
         return myRucksack.iterator();
     }
 }
