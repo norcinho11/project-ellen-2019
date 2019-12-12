@@ -11,7 +11,7 @@ public class Health {
    private int myMaxHealth;
    private int currentHealth;
     public Health(int initHealth, int maxHealth){
-        this.myInitHealth=initHealth;
+      this.myInitHealth=initHealth;
         this.myMaxHealth=maxHealth;
     }
     public Health(int initHealth){

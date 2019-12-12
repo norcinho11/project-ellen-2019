@@ -6,7 +6,7 @@ public abstract class Firearm {
     private int currentAmmo;
     public Firearm(int initAmmo, int maxAmmo){
         this.myMaxAmmo=maxAmmo;
-        this.myInitAmmo=initAmmo;
+       this.myInitAmmo=initAmmo;
     }
     public Firearm(int initAmmo){
         this.myMaxAmmo=initAmmo;
