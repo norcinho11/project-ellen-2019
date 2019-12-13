@@ -12,7 +12,7 @@ import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.KeeperController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
 import sk.tuke.kpi.oop.game.items.AccessCard;
-import sk.tuke.kpi.oop.game.openables.LockedDoor;
+
 
 public class MissionImpossible implements SceneListener {
 
@@ -32,8 +32,6 @@ public class MissionImpossible implements SceneListener {
             switch (name) {
                 case "ellen":
                     return new Ripley();
-                case "door":
-                    return new LockedDoor();
                 case "access card":
                     return new AccessCard();
                 case "ventilator":

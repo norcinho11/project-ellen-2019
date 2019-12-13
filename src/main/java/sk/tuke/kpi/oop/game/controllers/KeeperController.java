@@ -22,7 +22,7 @@ public class KeeperController implements KeyboardListener {
 
     @Override
     public void keyPressed(@NotNull Input.Key key) {
-       switch (key) {
+        switch (key) {
             case ENTER: {
                 new Take<Keeper>().scheduleFor(actor);
                 break;
@@ -38,28 +38,34 @@ public class KeeperController implements KeyboardListener {
                 break;
             }
             case U: {
-                for (Actor item : actor.getScene().getActors() ){
-                    if (item instanceof Usable && item.intersects(actor)) {
-                        new Use<>((Usable<?>) item).scheduleForIntersectingWith(actor);
-                        break;
-                    }
-                }
+                returnPlease();
+                break;
             }
-           case B: {
-               try {
-                   Usable<?> usable = (Usable<?>) actor.getBackpack().peek();
-                   new Use<>(usable).scheduleForIntersectingWith(actor);
-               }
-                catch (Exception ex) {
+            case B: {
+                try {
+                    Usable<?> usable = (Usable<?>) actor.getBackpack().peek();
+                    new Use<>(usable).scheduleForIntersectingWith(actor);
+                } catch (Exception ex) {
                     actor.getScene().getOverlay().drawText(ex.getMessage(), 300, 300).showFor(2);
 
                 }
-                   break;
+                break;
 
 //cyclematic ?!
 
-           }
-           default:   return;
+            }
+            default:
+                return;
+        }
+
+    }
+
+    private void returnPlease() {
+        for (Actor item : actor.getScene().getActors()) {
+            if (item instanceof Usable && item.intersects(actor)) {
+                new Use<>((Usable<?>) item).scheduleForIntersectingWith(actor);
+                break;
+            }
         }
     }
 }

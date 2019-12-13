@@ -19,4 +19,9 @@ public class Bullet extends AbstractActor implements Fireable {
     public void startedMoving(Direction direction) {
         //getDirection
         }
+
+    @Override
+    public void collidedWithWall() {
+        getScene().removeActor(this);
+    }
 }

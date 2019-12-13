@@ -36,7 +36,7 @@ public class FirstSteps implements SceneListener {
         int windowHeight = scene.getGame().getWindowSetup().getHeight();
         int yTextPos = windowHeight - GameApplication.STATUS_LINE_OFFSET;
         scene.getGame().getOverlay().drawText("Energy : ", 156,yTextPos);
-        scene.getGame().getOverlay().drawText(Integer.toString(ripley.getHealth()), 256,yTextPos);
+        scene.getGame().getOverlay().drawText(Integer.toString(ripley.getHealth().getValue()), 256,yTextPos);
 
         scene.getGame().getOverlay().drawText("Ammo : ", 356,yTextPos);
         scene.getGame().getOverlay().drawText(Integer.toString(ripley.getAmmo()), 456,yTextPos);

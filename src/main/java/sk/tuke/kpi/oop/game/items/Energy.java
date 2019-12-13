@@ -1,5 +1,5 @@
 package sk.tuke.kpi.oop.game.items;
-/*
+
 import sk.tuke.kpi.gamelib.framework.AbstractActor;
 import sk.tuke.kpi.gamelib.graphics.Animation;
 import sk.tuke.kpi.oop.game.characters.Ripley;
@@ -14,10 +14,10 @@ public Energy(){
     @Override
     public void useWith(Ripley actor) {
         if (actor.intersects(this)) {
-            if (actor.getEnergy() == 100) {
+            if (actor.getHealth().getValue() == 100) {
                 return;
             }
-            actor.setEnergy(100);
+            actor.getHealth().restore();
             getScene().removeActor(this);
         }
     }
@@ -27,4 +27,4 @@ public Energy(){
         return Ripley.class;
     }
 }
-*/
+

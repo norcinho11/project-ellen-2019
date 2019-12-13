@@ -19,21 +19,24 @@ public class Take <K extends Keeper> extends AbstractAction<K> {
     @Override
     public void execute(float deltaTime) {
         if(getActor()==null){
+            setDone(true);
             return;
         }
-      setDone(true);
         try {
             for (Actor actor : getActor().getScene().getActors()) {
                 if(actor instanceof Collectible && getActor().intersects(actor)) {
                     collectibleActor = (Collectible) actor;
+                    getActor().getBackpack().add(collectibleActor);
+                    getActor().getScene().removeActor(collectibleActor);
                     return;
                 }
             }
-            getActor().getBackpack().add(collectibleActor);
-            getActor().getScene().removeActor(collectibleActor);
+
 
         } catch (Exception ex) {
             getActor().getScene().getOverlay().drawText(ex.getMessage(), 100, 200).showFor(2);
         }
+
+        setDone(true);
     }
 }

@@ -3,11 +3,13 @@ package sk.tuke.kpi.oop.game.scenarios;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sk.tuke.kpi.gamelib.*;
-import sk.tuke.kpi.oop.game.characters.AlienMother;
+import sk.tuke.kpi.oop.game.behaviours.RandomlyMoving;
 import sk.tuke.kpi.oop.game.characters.Ripley;
 import sk.tuke.kpi.oop.game.controllers.KeeperController;
 import sk.tuke.kpi.oop.game.controllers.MovableController;
+import sk.tuke.kpi.oop.game.items.Ammo;
 import sk.tuke.kpi.oop.game.items.Backpack;
+import sk.tuke.kpi.oop.game.items.Energy;
 
 public class EscapeRoom implements SceneListener {
   private   Ripley ripley;
@@ -28,7 +30,7 @@ public class EscapeRoom implements SceneListener {
         int windowHeight = scene.getGame().getWindowSetup().getHeight();
         int yTextPos = windowHeight - GameApplication.STATUS_LINE_OFFSET;
         scene.getGame().getOverlay().drawText("Health : ", 156,yTextPos);
-        scene.getGame().getOverlay().drawText(Integer.toString(ripley.getHealth()), 256,yTextPos);
+        scene.getGame().getOverlay().drawText(Integer.toString(ripley.getHealth().getValue()), 256,yTextPos);
 
         scene.getGame().getOverlay().drawText("Ammo : ", 356,yTextPos);
         scene.getGame().getOverlay().drawText(Integer.toString(ripley.getAmmo()), 456,yTextPos);
@@ -50,8 +52,12 @@ public class EscapeRoom implements SceneListener {
             switch (name) {
                 case "ellen":
                     return new Ripley();
-                case "alien mother":
-                    return new AlienMother();
+                case "ammo":
+                    return new Ammo();
+                case "running":
+                    return (Actor) new RandomlyMoving();
+                case "energy":
+                    return new Energy();
                 default:
                     return null;
             }

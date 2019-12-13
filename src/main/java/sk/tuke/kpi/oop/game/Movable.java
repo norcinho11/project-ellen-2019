@@ -3,6 +3,9 @@ package sk.tuke.kpi.oop.game;
 import sk.tuke.kpi.gamelib.Actor;
 
 public interface Movable extends Actor {
+    default void collidedWithWall() {
+
+    }
     int getSpeed();
 
     default void startedMoving(Direction direction){

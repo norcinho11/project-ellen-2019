@@ -1,8 +1,8 @@
 package sk.tuke.kpi.oop.game;
 
 public enum Direction {
-    NORTH(0, 1), EAST(-1, 0), SOUTH(0, -1), WEST(1, 0),
-    NORTHEAST(-1, 1), NORTHWEST(1, 1), SOUTHEAST(-1, -1), SOUTHWEST(1, -1), NONE(0, 0);
+    NORTH(0, 1), EAST(1, 0), SOUTH(0, -1), WEST(-1, 0),
+    NORTHEAST(1, 1), NORTHWEST(-1, 1), SOUTHEAST(1, -1), SOUTHWEST(-1, -1), NONE(0, 0);
 
     private final int dx;
     private final int dy;
@@ -59,6 +59,27 @@ public enum Direction {
             }
         }
         return Direction.NONE;
+    }
+    public Direction fromAngle(float angle){
+        if (angle == 270.0f) {
+            return EAST;
+        } else if (angle == 45.0f) {
+            return NORTHWEST;
+        } else if (angle == 0.0f) {
+            return NORTH;
+        } else if (angle == 135.0f) {
+            return SOUTHWEST;
+        } else if (angle == 225.0f) {
+            return SOUTHEAST;
+        } else if (angle == 315.0f) {
+            return NORTHEAST;
+        } else if (angle == 90.0f) {
+            return WEST;
+        } else if (angle == 180.0f) {
+            return SOUTH;
+        }
+        return NONE;
+
     }
 }
 

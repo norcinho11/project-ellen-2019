@@ -10,17 +10,50 @@ import sk.tuke.kpi.gamelib.messages.Topic;
 import sk.tuke.kpi.oop.game.items.Usable;
 
 public class Door extends AbstractActor implements Openable, Usable<Actor> {
- private boolean isDoorOpen;
+
+    public enum Orientation{HORIZONTAL(1,0),VERTICAL(0,1);
+    private final int dx;
+    private final int dy;
+    Orientation(int dx,int dy){
+        this.dx=dx;
+        this.dy=dy;
+    }
+
+        public int getDx() {
+            return dx;
+        }
+
+        public int getDy() {
+            return dy;
+        }
+    }
+    private String name;
+    private Orientation orientation;
+    private boolean isDoorOpen;
+    private Animation vdoorAnimation= new Animation("sprites/vdoor.png",16,32,0.1f);
+    private Animation hdoorAnimation = new Animation("sprites/hdoor.png",32,16,0.1f);
   private   Animation openedDoorAnimation= new Animation("sprites/vdoor.png",16,32,0.1f, Animation.PlayMode.ONCE);
  private    Animation closedDoorAnimation= new Animation("sprites/vdoor.png",16,32,0.1f, Animation.PlayMode.ONCE_REVERSED);
     public static final Topic<Door> DOOR_OPENED = Topic.create("door opened", Door.class);
     public static final Topic<Door> DOOR_CLOSED = Topic.create("door closed", Door.class);
 
-    public Door(){
-        setAnimation(closedDoorAnimation);
-
+    public Door(String name,Orientation orientation){
+        this.name=name;
+        this.orientation=orientation;
         isDoorOpen=false;
+        if(orientation == Orientation.HORIZONTAL){
+          setAnimation(hdoorAnimation);
+          }
+        else if(orientation == Orientation.VERTICAL){
+            setAnimation(vdoorAnimation);
+        }
  }
+
+    @NotNull
+    @Override
+    public String getName() {
+        return name;
+    }
 
     @Override
     public void useWith(Actor actor) {
