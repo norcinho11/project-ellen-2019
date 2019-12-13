@@ -32,13 +32,13 @@ public enum Direction {
             case SOUTH:
                 return 360f - 180f;
             case NORTHEAST:
-                return  45f;
+                return  360f-45f;
             case NORTHWEST:
-                return 360f- 45f;
+                return 45f;
             case SOUTHEAST:
-                return 180f - 45f;
-            case SOUTHWEST:
                 return 180f + 45f;
+            case SOUTHWEST:
+                return 180f - 45f;
             default: return -1f;
         }
     }
@@ -60,7 +60,7 @@ public enum Direction {
         }
         return Direction.NONE;
     }
-    public Direction fromAngle(float angle){
+    public static Direction fromAngle(float angle) {
         if (angle == 270.0f) {
             return EAST;
         } else if (angle == 45.0f) {

@@ -9,7 +9,7 @@ public class Health {
     public interface ExhaustionEffect {
         void apply();
     }
-    private boolean alreadyOut;
+    private boolean alreadyOut=false;
     private int myMaxHealth;
     private int currentHealth;
     private List<ExhaustionEffect> exhEffList = new ArrayList<>();

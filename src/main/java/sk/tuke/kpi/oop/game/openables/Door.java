@@ -43,9 +43,11 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
         isDoorOpen=false;
         if(orientation == Orientation.HORIZONTAL){
           setAnimation(hdoorAnimation);
+          hdoorAnimation.stop();
           }
         else if(orientation == Orientation.VERTICAL){
             setAnimation(vdoorAnimation);
+            vdoorAnimation.stop();
         }
  }
 
@@ -57,7 +59,19 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
 
     @Override
     public void useWith(Actor actor) {
-
+        if(actor== null){
+            return;
+        }
+        if(this instanceof LockedDoor){
+            LockedDoor lockedDoor = (LockedDoor) this;
+            if(lockedDoor.isLocked()){
+                return;
+            }
+        }
+        if(!isOpen()){
+            open();
+        }
+        else close();
     }
 
     @Override
@@ -69,8 +83,12 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
     public void open() {
         isDoorOpen=true;
         setAnimation(openedDoorAnimation);
-        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)).setType(MapTile.Type.CLEAR);
-        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)+1).setType(MapTile.Type.CLEAR);
+        openedDoorAnimation.stop();
+        if(orientation==Orientation.HORIZONTAL){
+        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)).setType(MapTile.Type.CLEAR);}
+        if (orientation==Orientation.VERTICAL){
+        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)+1).setType(MapTile.Type.CLEAR);}
+
         getScene().getMessageBus().publish(DOOR_OPENED, this);
     }
 
@@ -78,8 +96,11 @@ public class Door extends AbstractActor implements Openable, Usable<Actor> {
     public void close() {
         isDoorOpen=false;
         setAnimation(closedDoorAnimation);
-        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)).setType(MapTile.Type.WALL);
-        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)+1).setType(MapTile.Type.WALL);
+        if(orientation==Orientation.HORIZONTAL){
+        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)).setType(MapTile.Type.WALL);}
+        if(orientation==Orientation.VERTICAL){
+        getScene().getMap().getTile((getPosX()/16), (getPosY()/16)+1).setType(MapTile.Type.WALL);}
+
         getScene().getMessageBus().publish(DOOR_CLOSED, this);
     }
 

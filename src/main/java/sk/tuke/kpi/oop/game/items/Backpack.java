@@ -95,7 +95,7 @@ public class Backpack implements ActorContainer<Collectible> {
             return null;
         }
         if (getSize() == 0) {
-            throw new IllegalStateException(this.getName() + " is empty");
+            return null;
         }
         return myRucksack.firstElement();
 

@@ -21,15 +21,17 @@ public class RandomlyMoving implements Behaviour<Movable> {
         if(actor == null){
             return;
         }
-        Movable movable=actor;
+         this.movable=actor;
         new Loop<>(
             new ActionSequence<>(new Invoke<>(this::makeRandomDir),
                 new Wait<>(2.0f))
         ).scheduleFor(movable);
     }
     private void makeRandomDir(){
+        if(movable != null){
         Direction[] directions =Direction.values();
         Move<Movable> move = new Move<>(directions[new Random().nextInt(Direction.values().length-1)],2.0f );
         move.scheduleFor(movable);
     }
+}
 }
