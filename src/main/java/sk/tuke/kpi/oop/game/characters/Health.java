@@ -42,12 +42,11 @@ public class Health {
     }
 
     public void drain(int mount) {
-        if (currentHealth - mount < 0) {
-            currentHealth= 0;
-            exhaust();
-            return;
-        }
-        currentHealth -= mount;
+             currentHealth -= mount;
+             if(currentHealth <=0){
+                 currentHealth=0;
+                 exhaust();
+             }
     }
 
     public void exhaust() {

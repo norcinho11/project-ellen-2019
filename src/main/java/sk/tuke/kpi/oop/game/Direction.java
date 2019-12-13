@@ -49,9 +49,9 @@ public enum Direction {
             return other;
         }
         int y = this.dy + other.dy;
-            if(y==2){y=1;}
+            if(y==2 || y== -2){y=y/2;}
         int x = this.dx + other.dx;
-            if(x==2){x=1;}
+            if(x==2 || x== -2){x=x/2;}
 
         for (int i = 0; i < ways.length; i++){
             if(ways[i].dx == x && ways[i].dy == y){

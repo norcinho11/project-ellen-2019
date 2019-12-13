@@ -5,7 +5,7 @@ public class Gun extends Firearm {
         super(initialAmmo, maximumAmmo);
     }
         @Override
-            protected Fireable makeBullet(){
+            protected Fireable createBullet(){
             return new Bullet();
         }
 }

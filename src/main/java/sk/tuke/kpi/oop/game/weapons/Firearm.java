@@ -9,7 +9,7 @@ public abstract class Firearm {
         this.currentAmmo = initAmmo;
     }
 
-    abstract protected Fireable makeBullet();
+    abstract protected Fireable createBullet();
 
     public Firearm(int initAmmo) {
         this.myMaxAmmo = initAmmo;
@@ -31,7 +31,7 @@ public abstract class Firearm {
     public Fireable fire() {
         if (currentAmmo != 0) {
             currentAmmo--;
-            return makeBullet();
+            return createBullet();
         }
         return null;
     }
