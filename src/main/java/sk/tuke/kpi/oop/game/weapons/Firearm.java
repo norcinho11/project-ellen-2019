@@ -20,6 +20,10 @@ public abstract class Firearm {
         return this.currentAmmo;
     }
 
+    public void setAmmo(int currentAmmo) {
+        this.currentAmmo = currentAmmo;
+    }
+
     public void reload(int newAmmo) {
         if (this.currentAmmo + newAmmo > this.myMaxAmmo) {
             this.currentAmmo = this.myMaxAmmo;

@@ -58,6 +58,9 @@ public class Alien extends AbstractActor implements Movable,Enemy,Alive {
         }
     }
     public void damagingRipley(Alive alive){
-        new Loop<>(new ActionSequence<>(new When<>(()->alive.intersects(this),new Invoke<>(()->alive.getHealth().drain(1))),new Wait<>(0.065f))).scheduleFor(this);
+        new Loop<>(new ActionSequence<>(
+            new When<>(()->alive.intersects(this),
+                new Invoke<>(()->alive.getHealth().drain(1))),
+            new Wait<>(0.065f))).scheduleFor(this);
     }
 }
