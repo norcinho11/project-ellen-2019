@@ -12,6 +12,9 @@ public class Ammo extends AbstractActor implements Usable<Armed> {
 
     @Override
     public void useWith(Armed actor) {
+        if(actor==null){
+            return;
+        }
         if (actor.intersects(this)) {
             if (actor.getFirearm().getAmmo() == 500) {
                 actor.getFirearm().setAmmo(500);
@@ -20,7 +23,7 @@ public class Ammo extends AbstractActor implements Usable<Armed> {
             if (actor.getFirearm().getAmmo() < 0) {
                 return;
             }
-            actor.getFirearm().setAmmo(actor.getFirearm().getAmmo() + 50);
+            actor.getFirearm().reload(actor.getFirearm().getAmmo()+50);
             getScene().removeActor(this);
         }
     }
