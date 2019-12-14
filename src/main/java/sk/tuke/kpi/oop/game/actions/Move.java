@@ -69,6 +69,7 @@ public class Move<A extends Movable> implements Action<Movable> {
         if(getActor().getScene().getMap().intersectsWithWall(getActor())) {
             stop();
             getActor().setPosition(posX, posY); //return ripley to the place with no wall
+            getActor().collidedWithWall();
         }
 
         if(duration==0) {

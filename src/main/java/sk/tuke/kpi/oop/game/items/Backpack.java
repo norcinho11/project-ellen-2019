@@ -82,7 +82,7 @@ public class Backpack implements ActorContainer<Collectible> {
             return;
         }
         if (getSize() == 0) {
-            throw new IllegalStateException(this.getName() + " is empty");
+            return;
         }
         myRucksack.remove(actor);
     }
@@ -97,7 +97,7 @@ public class Backpack implements ActorContainer<Collectible> {
         if (getSize() == 0) {
             return null;
         }
-        return myRucksack.firstElement();
+        return myRucksack.lastElement();
 
     }
 

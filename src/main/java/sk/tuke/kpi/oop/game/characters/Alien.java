@@ -49,11 +49,12 @@ public class Alien extends AbstractActor implements Movable,Enemy,Alive {
             return;
         } else {
             this.behaviour.setUp(this);
+        }
+
             for (Actor actor : scene.getActors()) {
                 if (!(actor instanceof Enemy) && actor instanceof Alive) {
                     damagingRipley((Alive) actor);
                 }
-            }
         }
     }
     public void damagingRipley(Alive alive){
