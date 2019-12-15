@@ -52,7 +52,7 @@ public class Alien extends AbstractActor implements Movable,Enemy,Alive {
         }
 
             for (Actor actor : scene.getActors()) {
-                if (!(actor instanceof Enemy) && actor instanceof Alive) {
+                if ((!(actor instanceof Enemy) )&& actor instanceof Alive) {
                     damagingRipley((Alive) actor);
                 }
         }
